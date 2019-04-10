@@ -12,12 +12,17 @@ class CharacterListView extends React.Component {
 
   componentDidMount() {
     // call our action
-    props.grabData()
+    this.props.grabData()
+    console.log('CDM', this.props)
   }
 
   render() {
+    console.log(this.props)
     if (this.props.fetching) {
       // return something here to indicate that you are fetching data
+      return ( 
+        <p>requesting data from the server</p>
+      )
     }
     return (
       <div className="CharactersList_wrapper">
@@ -29,9 +34,10 @@ class CharacterListView extends React.Component {
 
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
-let mapStateToProps = state => ({
-  characters: state.characters,
-  fetching: state.fetching
+const mapStateToProps = state => ({
+  characters: state.charsReducer.characters,
+  fetching: state.charsReducer.fetching,
+  error: state.charsReducer.error
 })
 
 export default connect(

@@ -15,8 +15,8 @@ export const grabData = () => dispatch => {
   dispatch({ type: FETCH })
 
   axios.get(`https://swapi.co/api/people`)
-  .then( res => {
-    dispatch({ type: SUCCESS, payload: res.data })
+  .then( res => {console.log('action', res)
+    dispatch({ type: SUCCESS, payload: res.data.results })
   })
   .catch( err => {
     dispatch({ type: FAIL, payload: err})
