@@ -12,13 +12,22 @@ export let FAIL = 'FAIL'
 // remember that now we have controll over our thunk-based action creator
 
 export const fetch = (data) => {
-
+  return {
+    type: FETCH,
+    payload: data
+  }
 }
 
 export const success = (res) => {
-
+  return {
+    type: SUCCESS,
+    payload: res
+  }
 }
 
 export const fail = (err) => {
-  
+  return {
+    type: FAIL,
+    payload: err
+  }
 }
